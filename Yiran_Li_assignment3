@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HomeWork3</title>
+    <link rel="stylesheet" href="homework03.css" />
+  </head>
+  <body>
+    NO.1
+    <div>
+      <table>
+        <script>
+          let data = [
+            ["Student Name", "Age", "Phone", "Address"],
+            ["John", "19", "455-983-0903", "123 Ave, San Francisco, CA, 94011"],
+            [
+              "Alex",
+              "21",
+              "455-983-0912",
+              "456 Rd, San Francisco, CA, 940122018",
+            ],
+            ["Josh", "22", "455-345-0912", "789 Dr, Newark, CA, 94016"],
+            ["Matt", "23", "321-345-0912", "223 Dr, Sunnyvale, CA, 94016"],
+          ];
+
+          function getCells(data, type) {
+            return data.map((cell) => `<${type}>${cell}</${type}>`).join("");
+          }
+
+          function createBody(data) {
+            return data
+              .map((row) => `<tr>${getCells(row, "td")}</tr>`)
+              .join("");
+          }
+
+          function createTable(data) {
+            // Destructure the headings (first row) from
+            // all the rows
+            const [headings, ...rows] = data;
+
+            // Return some HTML that uses `getCells` to create
+            // some headings, but also to create the rows
+            // in the tbody.
+            return `
+    <table>
+      <thead>${getCells(headings, "th")}</thead>
+      <tbody>${createBody(rows)}</tbody>
+    </table>
+  `;
+          }
+
+          // Bang it altogether
+          document.body.insertAdjacentHTML("beforeend", createTable(data));
+        </script>
+      </table>
+    </div>
+    <hr />
+    NO.2
+    <div>
+        An ordered technologies list
+        <ol id="myList"></ol>
+        <script>
+          //An ordered technologies list
+          let data2 = ["HTML", "JavaScript", "CSS", "React", "Redux", "Java"];
+          let list = document.getElementById("myList");
+          data2.forEach((item) => {
+            let li = document.createElement("li");
+            li.innerText = item;
+            list.appendChild(li);
+          });
+        </script>
+    
+      <div>
+        An unordered technologies list
+        <ul id="List1"></ul>
+        <script>
+          let list1= document.getElementById("List1");
+          data2.forEach((item) => {
+            let li = document.createElement("li");
+            li.innerText = item;
+            list1.appendChild(li);
+          });
+        </script>
+      </div>
+    <hr />
+    NO.3
+    <div>
+      <form id="myForm">
+        <select id="selectNumber"></select>
+      </form>
+      <script>
+        let myArray = new Array(
+          "Newark",
+          "SantaClara",
+          "UnionCity",
+          "Albany",
+          "DalyCity",
+          "SanJose"
+        );
+        let dropdown = document.getElementById("selectNumber");
+        for (let i = 0; i < myArray.length; i++) {
+          dropdown[dropdown.length] = new Option(myArray[i], myArray[i]);
+        }
+      </script>
+    </div>
+  </body>
+</html>
